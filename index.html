@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiStore24 - Earn 20% Commission | Affiliate Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* ===== HEADER ===== */
+        header { background: linear-gradient(135deg, #2a2d7a 0%, #1a1d5e 100%); color: white; padding: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { background: #ff6b35; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+        .logo h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.5px; }
+        .logo span { color: #ff6b35; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 16px; }
+        nav a:hover { color: #ff6b35; }
+        .user-menu { display: flex; align-items: center; gap: 20px; }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: #ff6b35; display: flex; align-items: center; justify-content: center; font-weight: 600; cursor: pointer; }
+        .mobile-menu-btn { display: none; font-size: 24px; cursor: pointer; }
+        .mobile-menu { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: #2a2d7a; padding: 20px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .mobile-menu.active { display: block; }
+        .mobile-menu ul { list-style: none; }
+        .mobile-menu li { margin-bottom: 15px; }
+        .mobile-menu a { color: white; text-decoration: none; font-size: 18px; display: block; padding: 10px 0; }
+        
+        /* ===== ADMIN DOT ===== */
+        .admin-dot { position: fixed; top: 15px; right: 15px; width: 8px; height: 8px; background: #ff6b35; border-radius: 50%; cursor: pointer; z-index: 2000; transition: all 0.3s; }
+        .admin-dot:hover { transform: scale(1.5); box-shadow: 0 0 10px rgba(255,107,53,0.7); }
+        
+        /* ===== HERO SECTION ===== */
+        .hero { padding: 80px 0; background: linear-gradient(to right, #f8f9fa 0%, #e9ecef 100%); }
+        .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        .hero-text { flex: 1; }
+        .hero-image { flex: 1; text-align: center; }
+        .hero h2 { font-size: 42px; margin-bottom: 15px; color: #2a2d7a; line-height: 1.2; }
+        .hero h2 span { color: #ff6b35; }
+        .hero p { font-size: 18px; margin-bottom: 30px; color: #555; }
+        
+        /* ===== BUTTONS ===== */
+        .btn { display: inline-block; background: #ff6b35; color: white; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background: #e55a2b; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,107,53,0.2); }
+        .btn-outline { background: transparent; border: 2px solid #ff6b35; color: #ff6b35; margin-left: 15px; }
+        .btn-outline:hover { background: #ff6b35; color: white; }
+        .hero-image img { max-width: 100%; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        
+        /* ===== PRODUCTS ===== */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 36px; color: #2a2d7a; margin-bottom: 15px; }
+        .section-title p { color: #777; max-width: 700px; margin: 0 auto; }
+        .products { padding: 80px 0; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; height: 100%; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .product-image { height: 200px; overflow: hidden; flex-shrink: 0; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-category { display: inline-block; background: #e9f5ff; color: #2a2d7a; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+        .product-title { font-size: 20px; margin-bottom: 10px; color: #333; }
+        .product-description { color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.5; overflow: hidden; position: relative; }
+        .product-description.short { max-height: 60px; }
+        .product-description.short::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 20px; background: linear-gradient(to bottom, rgba(255,255,255,0), white); }
+        .see-more-btn { background: none; border: none; color: #2a2d7a; font-weight: 600; font-size: 14px; cursor: pointer; padding: 5px 0; margin-bottom: 15px; text-align: left; display: flex; align-items: center; gap: 5px; }
+        .see-more-btn:hover { color: #ff6b35; }
+        .see-more-btn i { font-size: 12px; transition: transform 0.3s; }
+        .see-more-btn.expanded i { transform: rotate(180deg); }
+        .product-price { font-size: 22px; font-weight: 700; color: #ff6b35; margin-bottom: 10px; }
+        .product-commission { font-size: 14px; color: #4CAF50; font-weight: 600; margin-bottom: 20px; }
+        .product-link { display: block; width: 100%; text-align: center; margin-top: auto; }
+        
+        /* ===== DASHBOARD ===== */
+        .dashboard { padding: 80px 0; background: #f1f3f9; }
+        .dashboard-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .stat-card { background: white; border-radius: 12px; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .stat-icon { width: 60px; height: 60px; background: #2a2d7a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 24px; }
+        .stat-value { font-size: 32px; font-weight: 700; color: #2a2d7a; margin-bottom: 5px; }
+        .stat-label { color: #777; font-size: 14px; }
+        .dashboard-section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .dashboard-section h3 { font-size: 22px; color: #2a2d7a; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .referral-link { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #ff6b35; }
+        .referral-link input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 10px; font-family: 'Poppins', sans-serif; }
+        .commission-table { width: 100%; border-collapse: collapse; }
+        .commission-table th, .commission-table td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        .commission-table th { background: #f8f9fa; color: #2a2d7a; font-weight: 600; }
+        .commission-table tr:hover { background: #f9f9f9; }
+        .commission-amount { color: #4CAF50; font-weight: 600; }
+        
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works { padding: 80px 0; background: #f8f9fa; }
+        .steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+        .step { flex: 1; min-width: 250px; text-align: center; padding: 30px 20px; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .step-icon { width: 80px; height: 80px; background: #2a2d7a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px; }
+        .step h3 { font-size: 22px; margin-bottom: 15px; color: #2a2d7a; }
+        
+        /* ===== MODALS ===== */
+        .user-modal, .password-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; }
+        .user-content, .password-content { background: white; border-radius: 12px; width: 90%; max-width: 500px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); position: relative; }
+        .password-content { max-width: 400px; text-align: center; }
+        .user-tabs, .admin-tabs { display: flex; margin-bottom: 30px; border-bottom: 1px solid #eee; }
+        .user-tab, .admin-tab { padding: 12px 24px; background: none; border: none; font-size: 16px; font-weight: 600; color: #777; cursor: pointer; position: relative; }
+        .user-tab.active, .admin-tab.active { color: #2a2d7a; }
+        .user-tab.active::after, .admin-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #2a2d7a; }
+        .user-form, .admin-section { display: none; }
+        .user-form.active, .admin-section.active { display: block; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; }
+        .form-control:focus { outline: none; border-color: #2a2d7a; }
+        .form-row { display: flex; gap: 20px; }
+        .form-row .form-group { flex: 1; }
+        .close-user-modal, .close-password, .close-admin { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; color: #777; cursor: pointer; }
+        .close-admin { background: #ff6b35; color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+        .password-input { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px; text-align: center; font-family: monospace; letter-spacing: 1px; }
+        .password-error { color: #ff3b30; margin-top: 10px; display: none; }
+        
+        /* ===== ADMIN PANEL ===== */
+        .admin-panel { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto; padding: 20px; }
+        .admin-content { background: white; border-radius: 12px; max-width: 1200px; margin: 40px auto; padding: 30px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .admin-header h2 { font-size: 28px; color: #2a2d7a; }
+        
+        /* ===== LISTS ===== */
+        .products-list, .users-list { margin-top: 30px; }
+        .product-item, .user-item { display: flex; align-items: center; padding: 20px; background: #f9f9f9; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eee; }
+        .product-item-image { width: 80px; height: 80px; border-radius: 8px; overflow: hidden; margin-right: 20px; flex-shrink: 0; }
+        .product-item-image img { width: 100%; height: 100%; object-fit: cover; }
+        .user-item-avatar { width: 50px; height: 50px; border-radius: 50%; background: #2a2d7a; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; margin-right: 20px; flex-shrink: 0; }
+        .product-item-info, .user-item-info { flex: 1; }
+        .product-item-title, .user-item-name { font-size: 18px; font-weight: 600; margin-bottom: 5px; color: #2a2d7a; }
+        .product-item-category { display: inline-block; background: #e9f5ff; color: #2a2d7a; padding: 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 600; margin-bottom: 5px; }
+        .product-item-description { color: #666; font-size: 14px; margin-bottom: 5px; line-height: 1.4; }
+        .product-item-price { font-weight: 700; color: #ff6b35; }
+        .user-item-email { color: #777; font-size: 14px; margin-bottom: 5px; }
+        .user-item-earnings { font-weight: 700; color: #4CAF50; }
+        .product-item-actions { display: flex; gap: 10px; }
+        .action-btn { padding: 8px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; }
+        .edit-btn { background: #2a2d7a; color: white; }
+        .delete-btn { background: #ff3b30; color: white; }
+        
+        /* ===== FOOTER ===== */
+        footer { background: #1a1d5e; color: white; padding: 60px 0 30px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 40px; }
+        .footer-column { flex: 1; min-width: 250px; }
+        .footer-column h3 { font-size: 20px; margin-bottom: 25px; color: #ff6b35; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: #ff6b35; }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s; }
+        .social-icons a:hover { background: #ff6b35; transform: translateY(-3px); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: #aaa; }
+        
+        /* ===== NOTIFICATION ===== */
+        .notification { position: fixed; top: 20px; right: 20px; padding: 15px 25px; border-radius: 8px; color: white; font-weight: 600; z-index: 5000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; animation: slideIn 0.3s; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .notification.success { background: #4CAF50; }
+        .notification.error { background: #f44336; }
+        .notification.info { background: #2196F3; }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero h2 { font-size: 36px; }
+            .form-row, .steps { flex-direction: column; }
+            .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero h2 { font-size: 32px; }
+            .section-title h2 { font-size: 30px; }
+            .product-item, .user-item { flex-direction: column; text-align: center; }
+            .product-item-image, .user-item-avatar { margin-right: 0; margin-bottom: 15px; }
+            .product-item-actions { margin-top: 15px; }
+            .dashboard-stats { grid-template-columns: 1fr; }
+            .commission-table { display: block; overflow-x: auto; }
+            .product-description.short { max-height: 72px; }
+            .btn-outline { margin-left: 0; margin-top: 10px; }
+        }
+        @media (max-width: 576px) {
+            .hero { padding: 60px 0; }
+            .hero h2 { font-size: 28px; }
+            .btn { display: block; width: 100%; margin-bottom: 10px; }
+            .products, .dashboard, .how-it-works { padding: 60px 0; }
+            .admin-dot { top: 10px; right: 10px; }
+            .admin-tabs { flex-direction: column; }
+            .product-description.short { max-height: 84px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden Admin Dot -->
+    <div class="admin-dot" id="adminDot" title="Admin Panel"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-store"></i></div>
+                    <h1>Digi<span>Store</span>24</h1>
+                </div>
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="user-menu">
+                    <div id="userLoginBtn" class="btn btn-outline">Login</div>
+                    <div id="userAvatar" class="user-avatar" style="display: none;"><span id="userInitials">U</span></div>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="mobileLoginBtn">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Earn 20% Commission with <span>DigiStore24</span></h2>
+                    <p>Join our affiliate program and earn 20% commission on every sale you refer. Promote products, share your unique links, and start earning today!</p>
+                    <a href="#dashboard" class="btn" id="heroJoinBtn">Join Now - It's Free</a>
+                    <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="DigiStore24 Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Promote & Earn 20% Commission</h2>
+                <p>Share these products with your unique affiliate link and earn 20% commission on every sale!</p>
+            </div>
+            <div class="products-grid" id="productsContainer"></div>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Affiliate Dashboard</h2>
+                <p>Track your earnings, referrals, and commissions in real-time</p>
+            </div>
+            <div id="dashboardContent">
+                <div class="dashboard-section" style="text-align: center; padding: 60px 20px;">
+                    <h3>Please Login or Register</h3>
+                    <p>To access your affiliate dashboard and start earning commissions, please login or create a free account.</p>
+                    <button class="btn" id="dashboardLoginBtn" style="margin-top: 20px;">Login / Register</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Start earning 20% commission in just 3 simple steps</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3>Create Account</h3>
+                    <p>Sign up for a free affiliate account to get your unique affiliate ID and tracking links.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-share-alt"></i></div>
+                    <h3>Share Products</h3>
+                    <p>Copy your unique affiliate links for products and share them on social media, blogs, or with your network.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Earn Commissions</h3>
+                    <p>Earn 20% commission on every sale made through your links. Get paid monthly via PayPal or bank transfer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Modal -->
+    <div class="user-modal" id="userModal">
+        <div class="user-content">
+            <button class="close-user-modal" id="closeUserModal"><i class="fas fa-times"></i></button>
+            <div class="user-tabs">
+                <button class="user-tab active" data-tab="login">Login</button>
+                <button class="user-tab" data-tab="register">Register</button>
+            </div>
+            <div class="user-form active" id="login-form">
+                <h3>Login to Your Account</h3>
+                <form id="loginForm">
+                    <div class="form-group"><label for="loginEmail">Email Address</label><input type="email" id="loginEmail" class="form-control" required></div>
+                    <div class="form-group"><label for="loginPassword">Password</label><input type="password" id="loginPassword" class="form-control" required></div>
+                    <div class="form-group"><button type="submit" class="btn">Login</button></div>
+                </form>
+            </div>
+            <div class="user-form" id="register-form">
+                <h3>Create Free Account</h3>
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group"><label for="registerName">Full Name</label><input type="text" id="registerName" class="form-control" required></div>
+                        <div class="form-group"><label for="registerEmail">Email Address</label><input type="email" id="registerEmail" class="form-control" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="registerPassword">Password</label><input type="password" id="registerPassword" class="form-control" required></div>
+                        <div class="form-group"><label for="registerConfirmPassword">Confirm Password</label><input type="password" id="registerConfirmPassword" class="form-control" required></div>
+                    </div>
+                    <div class="form-group"><button type="submit" class="btn">Create Account</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-content">
+            <button class="close-password" id="closePasswordModal"><i class="fas fa-times"></i></button>
+            <h3>Admin Access Required</h3>
+            <p>Please enter the password to access the admin panel</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Enter password" autocomplete="off">
+            <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
+            <button class="btn" id="submitPassword">Access Admin Panel</button>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2>Admin Panel - Complete Management</h2>
+                <button class="close-admin" id="closeAdminPanel"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="add-product">Add Product</button>
+                <button class="admin-tab" data-tab="manage-products">Manage Products</button>
+                <button class="admin-tab" data-tab="manage-users">Manage Users</button>
+                <button class="admin-tab" data-tab="manage-commissions">Manage Commissions</button>
+                <button class="admin-tab" data-tab="system-settings">System Settings</button>
+            </div>
+            <div class="admin-section active" id="add-product">
+                <form id="productForm">
+                    <div class="form-row">
+                        <div class="form-group"><label for="productTitle">Product Title *</label><input type="text" id="productTitle" class="form-control" required></div>
+                        <div class="form-group"><label for="productCategory">Category *</label>
+                            <select id="productCategory" class="form-control" required>
+                                <option value="">Select Category</option><option value="E-Books">E-Books</option><option value="Online Course">Online Course</option>
+                                <option value="Software">Software</option><option value="Membership">Membership</option><option value="Physical Product">Physical Product</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"><label for="productDescription">Product Description *</label>
+                        <textarea id="productDescription" class="form-control" rows="4" required></textarea>
+                        <small>First 100 characters will be shown initially. Users can click "See More" to view full description.</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="productPrice">Price ($) *</label><input type="number" id="productPrice" class="form-control" step="0.01" min="0" required></div>
+                        <div class="form-group"><label for="productImage">Image URL *</label><input type="url" id="productImage" class="form-control" required>
+                            <small>Enter a direct image link (e.g., https://example.com/image.jpg)</small>
+                        </div>
+                    </div>
+                    <div class="form-group"><label for="productLink">DigiStore24 Product Link *</label><input type="url" id="productLink" class="form-control" required></div>
+                    <input type="hidden" id="productId">
+                    <div class="form-group">
+                        <button type="submit" class="btn" id="submitProductBtn">Add Product</button>
+                        <button type="button" class="btn btn-outline" id="cancelEditBtn" style="display: none;">Cancel Edit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="admin-section" id="manage-products">
+                <h3>All Products</h3><p>Edit or delete products from your catalog.</p>
+                <div class="products-list" id="adminProductsList"></div>
+            </div>
+            <div class="admin-section" id="manage-users">
+                <h3>All Users / Affiliates</h3><p>View all registered users and their earnings.</p>
+                <div class="users-list" id="adminUsersList"></div>
+            </div>
+            <div class="admin-section" id="manage-commissions">
+                <h3>Commission Records</h3><p>View all commission transactions.</p>
+                <div class="commission-table-container">
+                    <table class="commission-table">
+                        <thead><tr><th>Date</th><th>User</th><th>Product</th><th>Sale Amount</th><th>Commission (20%)</th><th>Status</th></tr></thead>
+                        <tbody id="commissionRecords"></tbody>
+                    </table>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <button class="btn" id="addTestSale">Add Test Sale</button>
+                    <button class="btn btn-outline" id="clearCommissions">Clear All Commissions</button>
+                </div>
+            </div>
+            <div class="admin-section" id="system-settings">
+                <h3>System Settings</h3><p>Configure the affiliate system settings.</p>
+                <div class="form-group">
+                    <label for="commissionRate">Commission Rate (%)</label>
+                    <input type="number" id="commissionRate" class="form-control" value="20" min="1" max="100" step="0.5">
+                    <small>The percentage commission affiliates earn on each sale (currently 20%)</small>
+                </div>
+                <div class="form-group">
+                    <label for="minimumPayout">Minimum Payout Amount ($)</label>
+                    <input type="number" id="minimumPayout" class="form-control" value="50" min="0" step="1">
+                    <small>Minimum amount required for affiliates to request a payout</small>
+                </div>
+                <div class="form-group">
+                    <label for="payoutMethod">Default Payout Method</label>
+                    <select id="payoutMethod" class="form-control">
+                        <option value="paypal">PayPal</option><option value="bank">Bank Transfer</option><option value="crypto">Cryptocurrency</option>
+                    </select>
+                </div>
+                <div class="form-group"><button class="btn" id="saveSettings">Save Settings</button></div>
+                <div class="form-group" style="margin-top: 40px;">
+                    <h4>System Tools</h4>
+                    <button class="btn btn-outline" id="exportData">Export All Data</button>
+                    <button class="btn btn-outline" id="resetSystem">Reset System (Clear All Data)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo"><div class="logo-icon"><i class="fas fa-store"></i></div><h1>Digi<span>Store</span>24</h1></div>
+                    <p>Earn 20% commission promoting DigiStore24 products. Join our affiliate program today and start earning!</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li><li><a href="#products">Products</a></li><li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li><li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Product Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">E-Books</a></li><li><a href="#">Online Courses</a></li><li><a href="#">Software Tools</a></li>
+                        <li><a href="#">Memberships</a></li><li><a href="#">Physical Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> support@digistore24-affiliate.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Digital Street, Online City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DigiStore24 Affiliate Platform. All rights reserved. | <a href="#" style="color: #ff6b35;">Privacy Policy</a> | <a href="#" style="color: #ff6b35;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // ===== DIGISTORE24 AFFILIATE SYSTEM =====
+        class DigiStoreAffiliateSystem {
+            constructor() {
+                this.config = {
+                    commissionRate: 20,
+                    minimumPayout: 50,
+                    payoutMethod: 'paypal',
+                    systemPassword: '1q2w3e4r5t'
+                };
+                
+                // Load data from localStorage
+                this.products = this.loadData('digistore24_products') || this.getDefaultProducts();
+                this.users = this.loadData('digistore24_users') || [];
+                this.commissions = this.loadData('digistore24_commissions') || [];
+                this.settings = this.loadData('digistore24_settings') || this.config;
+                
+                this.currentUser = null;
+                this.currentEditId = null;
+                
+                this.init();
+            }
+            
+            // ===== DATA METHODS =====
+            loadData(key) {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : null;
+            }
+            
+            saveData(key, data) {
+                localStorage.setItem(key, JSON.stringify(data));
+            }
+            
+            getDefaultProducts() {
+                return [
+                    {
+                        id: 1,
+                        title: "Digital Marketing Mastery",
+                        category: "E-Books",
+                        description: "Learn how to build a successful online business with this comprehensive guide to digital marketing strategies. This ebook covers everything from SEO and social media marketing to email campaigns and conversion optimization. With over 300 pages of actionable content, you'll learn proven techniques to grow your online presence and generate consistent revenue.",
+                        price: "47.00",
+                        image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                        link: "https://www.digistore24.com/product/12345"
+                    },
+                    {
+                        id: 2,
+                        title: "Web Development Bootcamp",
+                        category: "Online Course",
+                        description: "From beginner to professional web developer in just 12 weeks. Learn HTML, CSS, JavaScript and more. This comprehensive course includes over 60 hours of video content, coding exercises, and real-world projects. You'll build responsive websites, interactive web applications, and learn modern frameworks like React and Node.js.",
+                        price: "297.00",
+                        image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                        link: "https://www.digistore24.com/product/67890"
+                    },
+                    {
+                        id: 3,
+                        title: "SEO Analysis Pro",
+                        category: "Software",
+                        description: "Advanced SEO tool that analyzes your website and provides actionable recommendations to improve rankings. Our software scans your site for technical issues, content gaps, backlink opportunities, and competitor weaknesses. Get detailed reports with step-by-step instructions to fix problems and optimize for search engines.",
+                        price: "97.00",
+                        image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1142&q=80",
+                        link: "https://www.digistore24.com/product/54321"
+                    },
+                    {
+                        id: 4,
+                        title: "Social Media Marketing Toolkit",
+                        category: "Software",
+                        description: "Complete suite of tools for social media managers and digital marketers. Schedule posts across all major platforms, analyze performance metrics, engage with your audience, and monitor brand mentions. Includes content calendar, visual design tools, hashtag suggestions, and competitor analysis.",
+                        price: "67.00",
+                        image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80",
+                        link: "https://www.digistore24.com/product/98765"
+                    },
+                    {
+                        id: 5,
+                        title: "Personal Finance Planner",
+                        category: "E-Books",
+                        description: "Take control of your finances with this comprehensive guide to budgeting, saving, investing, and debt management. Learn how to create a personalized financial plan, build an emergency fund, invest for retirement, and achieve financial freedom. Includes worksheets, calculators, and templates.",
+                        price: "39.00",
+                        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1011&q=80",
+                        link: "https://www.digistore24.com/product/13579"
+                    },
+                    {
+                        id: 6,
+                        title: "Fitness Training Program",
+                        category: "Online Course",
+                        description: "Complete home workout system that requires no equipment. Get in the best shape of your life with our 12-week transformation program. Includes customized workout plans, nutrition guides, progress tracking, and motivational support. Suitable for all fitness levels with modifications for beginners.",
+                        price: "89.00",
+                        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                        link: "https://www.digistore24.com/product/24680"
+                    }
+                ];
+            }
+            
+            generateId(items) {
+                return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
+            }
+            
+            // ===== AFFILIATE METHODS =====
+            generateAffiliateLink(productId, userId) {
+                if (!userId) return null;
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return null;
+                return `https://www.digistore24.com/affiliate/DS24AFF${userId}PROD${productId}T${Date.now()}`;
+            }
+            
+            calculateCommission(amount) {
+                return (amount * this.settings.commissionRate) / 100;
+            }
+            
+            recordCommission(userId, productId, saleAmount) {
+                const commissionAmount = this.calculateCommission(saleAmount);
+                const commission = {
+                    id: this.generateId(this.commissions),
+                    userId,
+                    productId,
+                    saleAmount,
+                    commissionAmount,
+                    date: new Date().toISOString(),
+                    status: 'pending'
+                };
+                
+                this.commissions.push(commission);
+                this.saveData('digistore24_commissions', this.commissions);
+                
+                const user = this.users.find(u => u.id === userId);
+                if (user) {
+                    user.totalEarnings = (user.totalEarnings || 0) + commissionAmount;
+                    user.totalSales = (user.totalSales || 0) + 1;
+                    this.saveData('digistore24_users', this.users);
+                }
+                
+                return commission;
+            }
+            
+            // ===== USER METHODS =====
+            registerUser(name, email, password) {
+                if (this.users.find(u => u.email === email)) {
+                    return { success: false, message: 'User with this email already exists' };
+                }
+                
+                const newUser = {
+                    id: this.generateId(this.users),
+                    name,
+                    email,
+                    password,
+                    joinDate: new Date().toISOString(),
+                    totalEarnings: 0,
+                    referralCode: `DS24${Math.random().toString(36).substring(2, 10).toUpperCase()}`,
+                    totalClicks: 0,
+                    totalSales: 0
+                };
+                
+                this.users.push(newUser);
+                this.saveData('digistore24_users', this.users);
+                return { success: true, user: newUser };
+            }
+            
+            loginUser(email, password) {
+                const user = this.users.find(u => u.email === email && u.password === password);
+                if (user) {
+                    const { password, ...userWithoutPassword } = user;
+                    this.currentUser = userWithoutPassword;
+                    sessionStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+                    return { success: true, user: userWithoutPassword };
+                }
+                return { success: false, message: 'Invalid email or password' };
+            }
+            
+            logoutUser() {
+                this.currentUser = null;
+                sessionStorage.removeItem('currentUser');
+            }
+            
+            getUserCommissions(userId) {
+                return this.commissions.filter(c => c.userId === userId);
+            }
+            
+            getUserTotalEarnings(userId) {
+                return this.getUserCommissions(userId).reduce((total, commission) => total + commission.commissionAmount, 0);
+            }
+            
+            // ===== UI METHODS =====
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.style.display = 'block';
+                setTimeout(() => { notification.style.display = 'none'; }, 3000);
+            }
+            
+            truncateText(text, maxLength = 100) {
+                if (text.length <= maxLength) return text;
+                const truncated = text.substr(0, maxLength);
+                const lastSpace = truncated.lastIndexOf(' ');
+                return text.substr(0, lastSpace) + '...';
+            }
+            
+            renderProducts() {
+                const container = document.getElementById('productsContainer');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                if (this.products.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; grid-column: 1/-1; padding: 40px;">No products available. Add some products from the admin panel.</p>';
+                    return;
+                }
+                
+                this.products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.dataset.productId = product.id;
+                    
+                    const needsTruncation = product.description.length > 100;
+                    const shortDescription = needsTruncation ? this.truncateText(product.description, 100) : product.description;
+                    
+                    let buttonHtml = '';
+                    if (this.currentUser) {
+                        buttonHtml = `
+                            <div class="product-commission">Earn $${(product.price * this.settings.commissionRate / 100).toFixed(2)} per sale (${this.settings.commissionRate}%)</div>
+                            <button class="btn product-link get-affiliate-link" data-product-id="${product.id}">Get My Affiliate Link</button>
+                        `;
+                    } else {
+                        buttonHtml = `
+                            <div class="product-commission">Affiliates earn ${this.settings.commissionRate}% commission</div>
+                            <a href="#dashboard" class="btn product-link">Join to Earn Commission</a>
+                        `;
+                    }
+                    
+                    card.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.title}">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">${product.category}</span>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-description ${needsTruncation ? 'short' : ''}">
+                                ${needsTruncation ? shortDescription : product.description}
+                            </div>
+                            ${needsTruncation ? `
+                                <button class="see-more-btn" data-product-id="${product.id}">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                            ` : ''}
+                            <div class="product-price">$${product.price}</div>
+                            ${buttonHtml}
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+                
+                this.setupSeeMoreButtons();
+            }
+            
+            setupSeeMoreButtons() {
+                document.querySelectorAll('.see-more-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(button.getAttribute('data-product-id'));
+                        const product = this.products.find(p => p.id === productId);
+                        if (!product) return;
+                        
+                        const productCard = button.closest('.product-card');
+                        const descriptionElement = productCard.querySelector('.product-description');
+                        
+                        if (button.classList.contains('expanded')) {
+                            const shortDescription = this.truncateText(product.description, 100);
+                            descriptionElement.innerHTML = shortDescription;
+                            descriptionElement.classList.add('short');
+                            button.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
+                            button.classList.remove('expanded');
+                        } else {
+                            descriptionElement.innerHTML = product.description;
+                            descriptionElement.classList.remove('short');
+                            button.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
+                            button.classList.add('expanded');
+                        }
+                    });
+                });
+            }
+            
+            renderDashboard() {
+                const container = document.getElementById('dashboardContent');
+                if (!container) return;
+                
+                if (!this.currentUser) {
+                    container.innerHTML = `
+                        <div class="dashboard-section" style="text-align: center; padding: 60px 20px;">
+                            <h3>Please Login or Register</h3>
+                            <p>To access your affiliate dashboard and start earning commissions, please login or create a free account.</p>
+                            <button class="btn" id="dashboardLoginBtn" style="margin-top: 20px;">Login / Register</button>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const userCommissions = this.getUserCommissions(this.currentUser.id);
+                const totalEarnings = this.getUserTotalEarnings(this.currentUser.id);
+                const pendingEarnings = userCommissions
+                    .filter(c => c.status === 'pending')
+                    .reduce((total, c) => total + c.commissionAmount, 0);
+                
+                container.innerHTML = `
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div>
+                            <div class="stat-value">$${totalEarnings.toFixed(2)}</div>
+                            <div class="stat-label">Total Earnings</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-value">$${pendingEarnings.toFixed(2)}</div>
+                            <div class="stat-label">Pending Payout</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-link"></i></div>
+                            <div class="stat-value">${this.currentUser.totalClicks || 0}</div>
+                            <div class="stat-label">Link Clicks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="stat-value">${this.currentUser.totalSales || 0}</div>
+                            <div class="stat-label">Total Sales</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section">
+                        <h3>Your Affiliate Link</h3>
+                        <div class="referral-link">
+                            <p>Share this link to earn commissions on all products:</p>
+                            <input type="text" id="mainAffiliateLink" value="${window.location.origin}?ref=${this.currentUser.referralCode}" readonly>
+                            <button class="btn copy-link-btn" data-clipboard-target="#mainAffiliateLink">Copy Link</button>
+                        </div>
+                        <p><strong>Your Referral Code:</strong> ${this.currentUser.referralCode}</p>
+                        <p>Share your link or referral code with others. When they sign up using your link, you'll earn commissions on their sales too!</p>
+                    </div>
+                    
+                    <div class="dashboard-section">
+                        <h3>Your Commission History</h3>
+                        ${userCommissions.length > 0 ? `
+                            <div class="commission-table-container">
+                                <table class="commission-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Product</th>
+                                            <th>Sale Amount</th>
+                                            <th>Commission (${this.settings.commissionRate}%)</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${userCommissions.map(commission => {
+                                            const product = this.products.find(p => p.id === commission.productId);
+                                            return `
+                                                <tr>
+                                                    <td>${new Date(commission.date).toLocaleDateString()}</td>
+                                                    <td>${product ? product.title : 'Unknown Product'}</td>
+                                                    <td>$${commission.saleAmount}</td>
+                                                    <td class="commission-amount">$${commission.commissionAmount.toFixed(2)}</td>
+                                                    <td><span class="status-badge ${commission.status}">${commission.status}</span></td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ` : '<p>No commission history yet. Start sharing your affiliate links to earn commissions!</p>'}
+                    </div>
+                    
+                    <div class="dashboard-section">
+                        <h3>Request Payout</h3>
+                        <p>You can request a payout when your earnings reach $${this.settings.minimumPayout}. Current balance: $${totalEarnings.toFixed(2)}</p>
+                        ${totalEarnings >= this.settings.minimumPayout ? 
+                            `<button class="btn" id="requestPayoutBtn">Request Payout ($${totalEarnings.toFixed(2)})</button>` : 
+                            `<button class="btn" disabled>Minimum payout is $${this.settings.minimumPayout}</button>`
+                        }
+                        <p style="margin-top: 10px; font-size: 14px; color: #777;">Payouts are processed monthly via ${this.settings.payoutMethod === 'paypal' ? 'PayPal' : this.settings.payoutMethod === 'bank' ? 'Bank Transfer' : 'Cryptocurrency'}.</p>
+                    </div>
+                `;
+            }
+            
+            renderAdminProducts() {
+                const container = document.getElementById('adminProductsList');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                if (this.products.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; padding: 40px;">No products available. Add some products using the form.</p>';
+                    return;
+                }
+                
+                this.products.forEach(product => {
+                    const shortDescription = this.truncateText(product.description, 80);
+                    const item = document.createElement('div');
+                    item.className = 'product-item';
+                    item.innerHTML = `
+                        <div class="product-item-image">
+                            <img src="${product.image}" alt="${product.title}">
+                        </div>
+                        <div class="product-item-info">
+                            <h4 class="product-item-title">${product.title}</h4>
+                            <span class="product-item-category">${product.category}</span>
+                            <p class="product-item-description">${shortDescription}</p>
+                            <div class="product-item-price">$${product.price}</div>
+                        </div>
+                        <div class="product-item-actions">
+                            <button class="action-btn edit-btn" data-id="${product.id}">Edit</button>
+                            <button class="action-btn delete-btn" data-id="${product.id}">Delete</button>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+            
+            renderAdminUsers() {
+                const container = document.getElementById('adminUsersList');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                if (this.users.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; padding: 40px;">No users registered yet.</p>';
+                    return;
+                }
+                
+                this.users.forEach(user => {
+                    const userEarnings = this.getUserTotalEarnings(user.id);
+                    const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                    
+                    const item = document.createElement('div');
+                    item.className = 'user-item';
+                    item.innerHTML = `
+                        <div class="user-item-avatar">${initials}</div>
+                        <div class="user-item-info">
+                            <h4 class="user-item-name">${user.name}</h4>
+                            <p class="user-item-email">${user.email}</p>
+                            <p class="user-item-earnings">Total Earnings: $${userEarnings.toFixed(2)}</p>
+                            <p style="font-size: 12px; color: #777;">Joined: ${new Date(user.joinDate).toLocaleDateString()}</p>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+            
+            renderCommissionRecords() {
+                const container = document.getElementById('commissionRecords');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                if (this.commissions.length === 0) {
+                    container.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px;">No commission records yet.</td></tr>';
+                    return;
+                }
+                
+                this.commissions.forEach(commission => {
+                    const user = this.users.find(u => u.id === commission.userId);
+                    const product = this.products.find(p => p.id === commission.productId);
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${new Date(commission.date).toLocaleDateString()}</td>
+                        <td>${user ? user.name : 'Unknown User'}</td>
+                        <td>${product ? product.title : 'Unknown Product'}</td>
+                        <td>$${commission.saleAmount}</td>
+                        <td class="commission-amount">$${commission.commissionAmount.toFixed(2)}</td>
+                        <td>
+                            <select class="commission-status" data-id="${commission.id}">
+                                <option value="pending" ${commission.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                <option value="approved" ${commission.status === 'approved' ? 'selected' : ''}>Approved</option>
+                                <option value="paid" ${commission.status === 'paid' ? 'selected' : ''}>Paid</option>
+                                <option value="rejected" ${commission.status === 'rejected' ? 'selected' : ''}>Rejected</option>
+                            </select>
+                        </td>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+            
+            // ===== INITIALIZATION =====
+            init() {
+                const storedUser = sessionStorage.getItem('currentUser');
+                if (storedUser) {
+                    this.currentUser = JSON.parse(storedUser);
+                    this.updateUIForLoggedInUser();
+                }
+                
+                this.renderProducts();
+                this.renderDashboard();
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                // User login/register
+                document.getElementById('userLoginBtn').addEventListener('click', () => this.openUserModal('login'));
+                document.getElementById('mobileLoginBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.openUserModal('login');
+                });
+                document.getElementById('dashboardLoginBtn').addEventListener('click', () => this.openUserModal('login'));
+                document.getElementById('heroJoinBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.openUserModal('register');
+                });
+                
+                // User modal
+                document.getElementById('closeUserModal').addEventListener('click', () => this.closeUserModal());
+                document.getElementById('userModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'userModal') {
+                        this.closeUserModal();
+                    }
+                });
+                
+                // User tabs
+                document.querySelectorAll('.user-tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const tabId = tab.getAttribute('data-tab');
+                        this.switchUserTab(tabId);
+                    });
+                });
+                
+                // Login form
+                document.getElementById('loginForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin();
+                });
+                
+                // Register form
+                document.getElementById('registerForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleRegister();
+                });
+                
+                // User avatar click
+                document.getElementById('userAvatar').addEventListener('click', () => {
+                    this.showNotification(`Logged in as ${this.currentUser.name}`, 'info');
+                });
+                
+                // Mobile menu
+                document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+                    document.getElementById('mobileMenu').classList.toggle('active');
+                });
+                
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.mobile-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        document.getElementById('mobileMenu').classList.remove('active');
+                    });
+                });
+                
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if(targetId === '#') return;
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Admin dot
+                document.getElementById('adminDot').addEventListener('click', () => {
+                    this.openPasswordModal();
+                });
+                
+                // Password modal
+                document.getElementById('closePasswordModal').addEventListener('click', () => this.closePasswordModal());
+                document.getElementById('passwordModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'passwordModal') {
+                        this.closePasswordModal();
+                    }
+                });
+                document.getElementById('submitPassword').addEventListener('click', () => {
+                    this.checkAdminPassword();
+                });
+                document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.checkAdminPassword();
+                    }
+                });
+                
+                // Admin panel
+                document.getElementById('closeAdminPanel').addEventListener('click', () => this.closeAdminPanel());
+                document.getElementById('adminPanel').addEventListener('click', (e) => {
+                    if (e.target.id === 'adminPanel') {
+                        this.closeAdminPanel();
+                    }
+                });
+                
+                // Admin tabs
+                document.querySelectorAll('.admin-tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const tabId = tab.getAttribute('data-tab');
+                        this.switchAdminTab(tabId);
+                    });
+                });
+                
+                // Product form
+                document.getElementById('productForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleProductSubmit();
+                });
+                
+                // Cancel edit
+                document.getElementById('cancelEditBtn').addEventListener('click', () => {
+                    this.cancelEdit();
+                });
+                
+                // Admin buttons
+                document.getElementById('addTestSale').addEventListener('click', () => {
+                    this.addTestSale();
+                });
+                
+                document.getElementById('clearCommissions').addEventListener('click', () => {
+                    if (confirm('Are you sure you want to clear all commission records?')) {
+                        this.commissions = [];
+                        this.saveData('digistore24_commissions', this.commissions);
+                        this.renderCommissionRecords();
+                        this.showNotification('All commission records cleared', 'success');
+                    }
+                });
+                
+                document.getElementById('saveSettings').addEventListener('click', () => {
+                    this.saveSystemSettings();
+                });
+                
+                document.getElementById('exportData').addEventListener('click', () => {
+                    this.exportData();
+                });
+                
+                document.getElementById('resetSystem').addEventListener('click', () => {
+                    if (confirm('WARNING: This will reset the entire system and delete all data. Are you sure?')) {
+                        this.resetSystem();
+                    }
+                });
+                
+                // Event delegation for dynamic elements
+                document.addEventListener('click', (e) => {
+                    // Get affiliate link buttons
+                    if (e.target.classList.contains('get-affiliate-link')) {
+                        e.preventDefault();
+                        const productId = parseInt(e.target.getAttribute('data-product-id'));
+                        this.showAffiliateLink(productId);
+                    }
+                    
+                    // Copy link buttons
+                    if (e.target.classList.contains('copy-link-btn')) {
+                        e.preventDefault();
+                        const targetId = e.target.getAttribute('data-clipboard-target');
+                        const input = document.querySelector(targetId);
+                        if (input) {
+                            input.select();
+                            document.execCommand('copy');
+                            this.showNotification('Link copied to clipboard!', 'success');
+                        }
+                    }
+                    
+                    // Edit product buttons in admin
+                    if (e.target.classList.contains('edit-btn')) {
+                        const id = parseInt(e.target.getAttribute('data-id'));
+                        this.editProduct(id);
+                    }
+                    
+                    // Delete product buttons in admin
+                    if (e.target.classList.contains('delete-btn')) {
+                        const id = parseInt(e.target.getAttribute('data-id'));
+                        if (confirm('Are you sure you want to delete this product?')) {
+                            this.deleteProduct(id);
+                        }
+                    }
+                    
+                    // Request payout button
+                    if (e.target.id === 'requestPayoutBtn') {
+                        this.requestPayout();
+                    }
+                    
+                    // Commission status changes
+                    if (e.target.classList.contains('commission-status')) {
+                        const commissionId = parseInt(e.target.getAttribute('data-id'));
+                        const newStatus = e.target.value;
+                        this.updateCommissionStatus(commissionId, newStatus);
+                    }
+                });
+            }
+            
+            updateUIForLoggedInUser() {
+                if (this.currentUser) {
+                    document.getElementById('userLoginBtn').style.display = 'none';
+                    document.getElementById('userAvatar').style.display = 'flex';
+                    document.getElementById('userInitials').textContent = 
+                        this.currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                    
+                    this.renderDashboard();
+                    this.renderProducts();
+                } else {
+                    document.getElementById('userLoginBtn').style.display = 'block';
+                    document.getElementById('userAvatar').style.display = 'none';
+                }
+            }
+            
+            // ===== USER MODAL =====
+            openUserModal(defaultTab = 'login') {
+                document.getElementById('userModal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                this.switchUserTab(defaultTab);
+            }
+            
+            closeUserModal() {
+                document.getElementById('userModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.getElementById('loginForm').reset();
+                document.getElementById('registerForm').reset();
+            }
+            
+            switchUserTab(tabId) {
+                document.querySelectorAll('.user-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.getAttribute('data-tab') === tabId) {
+                        tab.classList.add('active');
+                    }
+                });
+                
+                document.querySelectorAll('.user-form').forEach(form => {
+                    form.classList.remove('active');
+                    if (form.id === `${tabId}-form`) {
+                        form.classList.add('active');
+                    }
+                });
+            }
+            
+            handleLogin() {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                const result = this.loginUser(email, password);
+                
+                if (result.success) {
+                    this.showNotification(`Welcome back, ${result.user.name}!`, 'success');
+                    this.closeUserModal();
+                    this.updateUIForLoggedInUser();
+                } else {
+                    this.showNotification(result.message, 'error');
+                }
+            }
+            
+            handleRegister() {
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('registerConfirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    this.showNotification('Passwords do not match', 'error');
+                    return;
+                }
+                
+                const result = this.registerUser(name, email, password);
+                
+                if (result.success) {
+                    this.showNotification(`Account created successfully, ${result.user.name}!`, 'success');
+                    this.loginUser(email, password);
+                    this.closeUserModal();
+                    this.updateUIForLoggedInUser();
+                } else {
+                    this.showNotification(result.message, 'error');
+                }
+            }
+            
+            // ===== AFFILIATE LINK =====
+            showAffiliateLink(productId) {
+                if (!this.currentUser) {
+                    this.openUserModal('login');
+                    return;
+                }
+                
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return;
+                
+                const affiliateLink = this.generateAffiliateLink(productId, this.currentUser.id);
+                const commission = (product.price * this.settings.commissionRate / 100).toFixed(2);
+                
+                const modalHtml = `
+                    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; display: flex; align-items: center; justify-content: center;">
+                        <div style="background: white; border-radius: 12px; width: 90%; max-width: 500px; padding: 30px; position: relative;">
+                            <button style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; color: #777; cursor: pointer;" class="close-affiliate-modal">×</button>
+                            <h3 style="color: #2a2d7a; margin-bottom: 15px;">Your Affiliate Link</h3>
+                            <p>Share this link to earn <strong>$${commission}</strong> (${this.settings.commissionRate}%) for each sale of <strong>${product.title}</strong>.</p>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ff6b35;">
+                                <input type="text" id="affiliateLinkInput" value="${affiliateLink}" readonly style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px;">
+                                <button class="btn copy-affiliate-link" style="width: 100%;">Copy Affiliate Link</button>
+                            </div>
+                            <p style="font-size: 14px; color: #777;">Share this link on social media, blogs, emails, or with your network.</p>
+                        </div>
+                    </div>
+                `;
+                
+                const modalDiv = document.createElement('div');
+                modalDiv.innerHTML = modalHtml;
+                document.body.appendChild(modalDiv);
+                
+                modalDiv.querySelector('.close-affiliate-modal').addEventListener('click', () => {
+                    document.body.removeChild(modalDiv);
+                });
+                
+                modalDiv.addEventListener('click', (e) => {
+                    if (e.target === modalDiv.firstChild) {
+                        document.body.removeChild(modalDiv);
+                    }
+                });
+                
+                modalDiv.querySelector('.copy-affiliate-link').addEventListener('click', () => {
+                    const input = modalDiv.querySelector('#affiliateLinkInput');
+                    input.select();
+                    document.execCommand('copy');
+                    this.showNotification('Affiliate link copied to clipboard!', 'success');
+                    
+                    if (this.currentUser) {
+                        this.currentUser.totalClicks = (this.currentUser.totalClicks || 0) + 1;
+                        const userIndex = this.users.findIndex(u => u.id === this.currentUser.id);
+                        if (userIndex !== -1) {
+                            this.users[userIndex].totalClicks = this.currentUser.totalClicks;
+                            this.saveData('digistore24_users', this.users);
+                        }
+                        this.renderDashboard();
+                    }
+                });
+            }
+            
+            requestPayout() {
+                const totalEarnings = this.getUserTotalEarnings(this.currentUser.id);
+                
+                if (totalEarnings < this.settings.minimumPayout) {
+                    this.showNotification(`Minimum payout is $${this.settings.minimumPayout}`, 'error');
+                    return;
+                }
+                
+                this.showNotification(`Payout request submitted for $${totalEarnings.toFixed(2)}. Payment will be processed within 7-10 business days.`, 'success');
+            }
+            
+            // ===== ADMIN FUNCTIONS =====
+            openPasswordModal() {
+                document.getElementById('passwordModal').style.display = 'flex';
+                document.getElementById('passwordInput').focus();
+                document.getElementById('passwordError').style.display = 'none';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            closePasswordModal() {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('passwordInput').value = '';
+                document.body.style.overflow = 'auto';
+            }
+            
+            checkAdminPassword() {
+                const password = document.getElementById('passwordInput').value;
+                if (password === this.settings.systemPassword) {
+                    this.closePasswordModal();
+                    this.openAdminPanel();
+                } else {
+                    document.getElementById('passwordError').style.display = 'block';
+                    document.getElementById('passwordInput').value = '';
+                    document.getElementById('passwordInput').focus();
+                }
+            }
+            
+            openAdminPanel() {
+                document.getElementById('adminPanel').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                this.switchAdminTab('add-product');
+                this.cancelEdit();
+                this.renderAdminProducts();
+                this.renderAdminUsers();
+                this.renderCommissionRecords();
+                
+                document.getElementById('commissionRate').value = this.settings.commissionRate;
+                document.getElementById('minimumPayout').value = this.settings.minimumPayout;
+                document.getElementById('payoutMethod').value = this.settings.payoutMethod;
+            }
+            
+            closeAdminPanel() {
+                document.getElementById('adminPanel').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            switchAdminTab(tabId) {
+                document.querySelectorAll('.admin-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.getAttribute('data-tab') === tabId) {
+                        tab.classList.add('active');
+                    }
+                });
+                
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === tabId) {
+                        section.classList.add('active');
+                    }
+                });
+            }
+            
+            handleProductSubmit() {
+                const title = document.getElementById('productTitle').value;
+                const category = document.getElementById('productCategory').value;
+                const description = document.getElementById('productDescription').value;
+                const price = document.getElementById('productPrice').value;
+                const image = document.getElementById('productImage').value;
+                const link = document.getElementById('productLink').value;
+                const productId = document.getElementById('productId').value;
+                
+                if (!title || !category || !description || !price || !image || !link) {
+                    this.showNotification('Please fill all required fields!', 'error');
+                    return;
+                }
+                
+                const product = {
+                    title,
+                    category,
+                    description,
+                    price,
+                    image,
+                    link
+                };
+                
+                if (productId) {
+                    product.id = parseInt(productId);
+                    const index = this.products.findIndex(p => p.id === product.id);
+                    if (index !== -1) {
+                        this.products[index] = product;
+                        this.saveData('digistore24_products', this.products);
+                        this.showNotification('Product updated successfully!', 'success');
+                    }
+                } else {
+                    product.id = this.generateId(this.products);
+                    this.products.push(product);
+                    this.saveData('digistore24_products', this.products);
+                    this.showNotification('Product added successfully!', 'success');
+                }
+                
+                this.resetProductForm();
+                this.renderProducts();
+                this.renderAdminProducts();
+                this.renderDashboard();
+                this.switchAdminTab('manage-products');
+            }
+            
+            editProduct(id) {
+                const product = this.products.find(p => p.id === id);
+                if (!product) return;
+                
+                document.getElementById('productTitle').value = product.title;
+                document.getElementById('productCategory').value = product.category;
+                document.getElementById('productDescription').value = product.description;
+                document.getElementById('productPrice').value = product.price;
+                document.getElementById('productImage').value = product.image;
+                document.getElementById('productLink').value = product.link;
+                document.getElementById('productId').value = product.id;
+                
+                document.getElementById('submitProductBtn').textContent = 'Update Product';
+                document.getElementById('cancelEditBtn').style.display = 'inline-block';
+                this.switchAdminTab('add-product');
+                document.querySelector('.admin-content').scrollTop = 0;
+            }
+            
+            cancelEdit() {
+                this.resetProductForm();
+                document.getElementById('submitProductBtn').textContent = 'Add Product';
+                document.getElementById('cancelEditBtn').style.display = 'none';
+            }
+            
+            resetProductForm() {
+                document.getElementById('productForm').reset();
+                document.getElementById('productId').value = '';
+            }
+            
+            deleteProduct(id) {
+                const index = this.products.findIndex(p => p.id === id);
+                if (index !== -1) {
+                    this.products.splice(index, 1);
+                    this.saveData('digistore24_products', this.products);
+                    this.showNotification('Product deleted successfully!', 'success');
+                    this.renderProducts();
+                    this.renderAdminProducts();
+                    this.renderDashboard();
+                }
+            }
+            
+            addTestSale() {
+                if (this.users.length === 0 || this.products.length === 0) {
+                    this.showNotification('Need at least one user and one product to add test sale', 'error');
+                    return;
+                }
+                
+                const randomUser = this.users[Math.floor(Math.random() * this.users.length)];
+                const randomProduct = this.products[Math.floor(Math.random() * this.products.length)];
+                
+                const commission = this.recordCommission(
+                    randomUser.id, 
+                    randomProduct.id, 
+                    parseFloat(randomProduct.price)
+                );
+                
+                this.showNotification(`Test sale recorded! ${randomUser.name} earned $${commission.commissionAmount.toFixed(2)} commission for ${randomProduct.title}`, 'success');
+                
+                this.renderAdminUsers();
+                this.renderCommissionRecords();
+                this.renderDashboard();
+            }
+            
+            updateCommissionStatus(commissionId, newStatus) {
+                const commission = this.commissions.find(c => c.id === commissionId);
+                if (commission) {
+                    commission.status = newStatus;
+                    this.saveData('digistore24_commissions', this.commissions);
+                    this.showNotification(`Commission status updated to ${newStatus}`, 'success');
+                }
+            }
+            
+            saveSystemSettings() {
+                this.settings.commissionRate = parseFloat(document.getElementById('commissionRate').value);
+                this.settings.minimumPayout = parseFloat(document.getElementById('minimumPayout').value);
+                this.settings.payoutMethod = document.getElementById('payoutMethod').value;
+                
+                this.saveData('digistore24_settings', this.settings);
+                this.showNotification('System settings saved successfully!', 'success');
+                
+                this.renderProducts();
+                this.renderDashboard();
+            }
+            
+            exportData() {
+                const exportData = {
+                    products: this.products,
+                    users: this.users.map(u => {
+                        const { password, ...userWithoutPassword } = u;
+                        return userWithoutPassword;
+                    }),
+                    commissions: this.commissions,
+                    settings: this.settings,
+                    exportDate: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(exportData, null, 2);
+                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                
+                const exportFileDefaultName = `digistore24-export-${new Date().toISOString().split('T')[0]}.json`;
+                
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
+                linkElement.click();
+                
+                this.showNotification('Data exported successfully!', 'success');
+            }
+            
+            resetSystem() {
+                localStorage.clear();
+                
+                this.products = this.getDefaultProducts();
+                this.users = [];
+                this.commissions = [];
+                this.settings = this.config;
+                this.currentUser = null;
+                
+                this.saveData('digistore24_products', this.products);
+                this.saveData('digistore24_settings', this.settings);
+                
+                sessionStorage.clear();
+                
+                this.updateUIForLoggedInUser();
+                this.renderProducts();
+                this.renderDashboard();
+                this.renderAdminProducts();
+                this.renderAdminUsers();
+                this.renderCommissionRecords();
+                
+                this.showNotification('System has been reset to default settings', 'success');
+                this.closeAdminPanel();
+            }
+        }
+        
+        // ===== INITIALIZE SYSTEM =====
+        document.addEventListener('DOMContentLoaded', () => {
+            window.digiStoreSystem = new DigiStoreAffiliateSystem();
+        });
+    </script>
+</body>
+</html>
